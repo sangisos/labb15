@@ -5,7 +5,9 @@
 abstype receipt = Void | Receipt of string * int * int * receipt * receipt
 with
 (* new
-
+   TYPE: unit -> reciept
+   PRE:  true
+   POST: An empty receipt.
 *)
 
 (* add (receipt, item)
@@ -15,8 +17,10 @@ with
 *)
 fun add (receipt, item) = raise Fail "not yet implemented."
 
-(* del (search)
-
+(* del receipt item
+   TYPE: receipt * string -> receipt
+   PRE:  true
+   POST: returns reciept without one occurence of item.
 *)
 
 (* sum
