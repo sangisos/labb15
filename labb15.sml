@@ -95,7 +95,9 @@ fun sum (Void, prices) = 0
 	SIDE-EFFECT: prints the receipt to screen, using one entry for each item and
 	             also displays the total price of the receipt.
 *)
-fun display receipt = raise Fail "not yet implemented."
+fun display (Void, prices) = ()
+  | display (Receipt(name, count, l, r), prices) =
+	(display(l, prices);print(name^": "^Int.toString(count * priceSearch(prices, name))^"\n");display(r, prices));
 
 (* requireID receipt
 	TYPE: receipt -> bool
