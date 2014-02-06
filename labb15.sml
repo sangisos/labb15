@@ -10,8 +10,10 @@ with
    POST: An empty receipt.
 *)
 
-(* add (ev search)
-
+(* add (receipt, item)
+	TYPE: receipt * string
+	PRE:
+	POST:
 *)
 fun add (receipt, item) = raise Fail "not yet implemented."
 
@@ -22,7 +24,9 @@ fun add (receipt, item) = raise Fail "not yet implemented."
 *)
 
 (* sum
-
+	TYPE:
+	PRE:
+	POST:
 *)
 fun sum receipt = raise Fail "not yet implemented."
 
@@ -34,12 +38,16 @@ fun sum receipt = raise Fail "not yet implemented."
 *)
 
 (* display
-
+	TYPE:
+	PRE:
+	POST:
 *)
 fun display receipt = raise Fail "not yet implemented."
 
 (* requireID (exists beer)
-
+	TYPE:
+	PRE:
+	POST:
 *)
 fun requireID receipt = raise Fail "not yet implemented."
 
