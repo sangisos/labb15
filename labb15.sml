@@ -10,15 +10,15 @@ with
 	(* empty is an empty product price list *)
 	val empty = []
 
-	(* add l, item, price
+	(* priceAdd l, item, price
 		TYPE: prices * string * int -> prices
 		PRE: true
 		POST: add the price information of the product with the name item and the
 		      price price to l.
 	*)
-	fun add(l, item, price) = raise Fail "not yet implemented."
+	fun priceAdd(l, item, price) = raise Fail "not yet implemented."
 
-	(* search l, item
+	(* priceSearch l, item
 		TYPE: prices * string -> int
 		PRE: true
 		POST: add the price information of the product with the name item and the
@@ -26,7 +26,7 @@ with
 		SIDE-EFFECT: raises an exception if the product name item is not present
 		             in l.
 	*)
-	fun search(l, item) = raise Fail "not yet implemented."
+	fun priceSearch(l, item) = raise Fail "not yet implemented."
 end;
 
 (* abstype receipt
@@ -49,13 +49,21 @@ with
    PRE:  true
    POST: An empty receipt.
 *)
+fun new () = Void;
 
 (* add (receipt, item)
 	TYPE: receipt * string -> receipt
 	PRE: true
 	POST: a receipt with one more occurence of item.
 *)
-fun add (receipt, item) = raise Fail "not yet implemented."
+fun add (Void, item) = Receipt(item, 1, Void, Void)
+  | add (Receipt(name, count, l, r), item) =
+	if name = item then
+		Receipt(name, count+1, l, r)
+	else if item < name then
+		Receipt(name, count, add(l, item), r)
+	else
+		Receipt(name, count, l, add(r, item));
 
 (* del (receipt, item)
    TYPE: receipt * string -> receipt
@@ -95,7 +103,9 @@ fun del (Void, item) = Void
 	POST: The total price of the receipt in the smallest unit of the currency,
 	      e.g. cent or öre.
 *)
-fun sum (receipt, prices) = raise Fail "not yet implemented."
+fun sum (Void, prices) = 0
+  | sum (Receipt(name, count, l, r), prices) =
+	count * priceSearch(prices, name) + sum(l, prices) + sum(r, prices);
 
 (* addTax (takeAway, reciept)
    TYPE: bool * receipt -> receipt
@@ -111,7 +121,9 @@ fun sum (receipt, prices) = raise Fail "not yet implemented."
 	SIDE-EFFECT: prints the receipt to screen, using one entry for each item and
 	             also displays the total price of the receipt.
 *)
-fun display receipt = raise Fail "not yet implemented."
+fun display (Void, prices) = ()
+  | display (Receipt(name, count, l, r), prices) =
+	(display(l, prices);print(name^": "^Int.toString(count * priceSearch(prices, name))^"\n");display(r, prices));
 
 (* requireID receipt
 	TYPE: receipt -> bool
