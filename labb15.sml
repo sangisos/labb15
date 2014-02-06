@@ -2,16 +2,16 @@
 
 
 *)
-abstype receipt = Void | Receipt of string * int * int * receipt * receipt
+abstype receipt = Void | Receipt of string * int * receipt * receipt
 with
 (* new
-   TYPE: unit -> reciept
+   TYPE: unit -> receipt
    PRE:  true
    POST: An empty receipt.
 *)
 
 (* add (receipt, item)
-	TYPE: receipt * string
+	TYPE: receipt * string -> receipt
 	PRE:
 	POST:
 *)
@@ -20,30 +20,26 @@ fun add (receipt, item) = raise Fail "not yet implemented."
 (* del receipt item
    TYPE: receipt * string -> receipt
    PRE:  true
-   POST: returns reciept without one occurence of item.
+   POST: returns receipt without one occurence of item.
 *)
 
-(* sum
+(* sum (receipt, prices)
 	TYPE:
 	PRE:
 	POST:
 *)
-fun sum receipt = raise Fail "not yet implemented."
+fun sum (receipt, prices) = raise Fail "not yet implemented."
 
 (* addTax
 
 *)
 
-(* display
+(* display (receipt, prices)
 	TYPE:
 	PRE:
 	POST:
 *)
-fun display receipt = raise Fail "not yet implemented."
-
-(* discount (search)
-
-*)
+fun display (receipt, prices) = raise Fail "not yet implemented."
 
 (* requireID (exists beer)
 	TYPE:
