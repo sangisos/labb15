@@ -26,7 +26,13 @@ with
 		SIDE-EFFECT: raises an exception if the product name item is not present
 		             in l.
 	*)
-	fun priceSearch(l, item) = raise Fail "not yet implemented."
+	fun priceSearch (Prices([]), _) = raise Empty
+	  | priceSearch (Prices((name, price)::tail), item) =
+		if name = item then
+			price
+		else
+			priceSearch (Prices(tail), item);
+
 end;
 
 (* abstype receipt
@@ -99,12 +105,22 @@ fun display (Void, prices) = ()
   | display (Receipt(name, count, l, r), prices) =
 	(display(l, prices);print(name^": "^Int.toString(count * priceSearch(prices, name))^"\n");display(r, prices));
 
-(* requireID receipt
-	TYPE: receipt -> bool
+(* requireID (receipt, names)
+	TYPE: receipt * string list -> bool
 	PRE: true
 	POST: true if there is any item on the receipt that requires ID verification,
-	      such as beer or tabaco.
+	      such as beer or tabaco. The items that require ID verification are
+	      present in names.
 *)
-fun requireID receipt = raise Fail "not yet implemented."
+
+fun requireID (Void, _) = false;
+
+(*
+fun requireID (Void, _) = false
+  | requireID (Receipt(name, _, l, r), names) =
+	((List.exists (fn x => (x = name))) names)
+	orelse requireID(l, name)
+	orelse requireID(r, name);
+*)
 
 end;
