@@ -96,7 +96,7 @@ fun del (Void, item) = Void
             *)
             fun insertRight Void = R
               | insertRight (Receipt(iiN,iiA,iL,iR)) = Receipt(iiN,iiA,iL,insertRight(iR))
-            
+
         in
             del (Receipt(liN,liA,lL,insertRight(lR)), item)
         end
@@ -129,7 +129,9 @@ fun sum (Void, prices) = 0
 *)
 fun display (Void, prices) = ()
   | display (Receipt(name, count, l, r), prices) =
-	(display(l, prices);print(name^": "^Int.toString(count * priceSearch(prices, name))^"\n");display(r, prices));
+	(display(l, prices);
+	print(name^": "^Int.toString(count * priceSearch(prices, name))^"\n");
+	display(r, prices));
 
 (* requireID (receipt, names)
 	TYPE: receipt * string list -> bool
