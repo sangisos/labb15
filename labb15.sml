@@ -62,6 +62,32 @@ fun add (receipt, item) = raise Fail "not yet implemented."
    PRE:  true
    POST: returns receipt without one occurence of item.
 *)
+fun del (Void, item) = Void
+  | del (T as Receipt(itemName,itemAmount,Void,R), item) =
+    if itemName=item then
+        (if itemAmount < 2 then
+            del (R,item)
+         else
+            Receipt(itemName,itemAmount-1,Void,del (R,item)))
+    else
+        Receipt(itemName,itemAmount,Void,del (R,item))
+  | del (Receipt(itemName,itemAmount,L as (Receipt(liN,liA,lL,lR)),R), item) =
+    if itemName=item then
+        let
+            (* insertRight T2
+               TYPE: ''a bTree -> ''a bTree
+               PRE: (none)
+               POST: T2 with R inserted at the end of the right chain of nodes.
+               VARIANT: height T2
+            *)
+            fun insertRight Void = R
+              | insertRight (Receipt(iiN,iiA,iL,iR)) = Receipt(iiN,iiA,iL,insertRight(iR))
+            
+        in
+            del (Receipt(liN,liA,lL,insertRight(lR)), item)
+        end
+    else
+        Receipt(itemName,itemAmount,del(L,item),del(R,item))
 
 (* sum (receipt, prices)
 	TYPE: receipt * prices -> int
