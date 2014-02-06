@@ -1,9 +1,31 @@
+(*
+	REPRESENTATION CONVENTION: a list of product prices, where each element
+	                           consists of a product name and the price of that
+	                           product.
+	REPRESENTATION INVARIANT: the price should be represented in the smallest
+	                          unit of the currency, e.g. cent or öre.
+*)
 abstype prices = Prices of (string * int) list
 with
+	(* empty is an empty product price list *)
 	val empty = []
 
+	(* add l, item, price
+		TYPE: prices * string * int -> prices
+		PRE: true
+		POST: add the price information of the product with the name item and the
+		      price price to l.
+	*)
 	fun add(l, item, price) = raise Fail "not yet implemented."
 
+	(* search l, item
+		TYPE: prices * string -> int
+		PRE: true
+		POST: add the price information of the product with the name item and the
+		      price price to l.
+		SIDE-EFFECT: raises an exception if the product name item is not present
+		             in l.
+	*)
 	fun search(l, item) = raise Fail "not yet implemented."
 end;
 
