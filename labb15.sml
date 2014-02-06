@@ -1,3 +1,12 @@
+abstype prices = Prices of (string * int) list
+with
+	val empty = []
+
+	fun add(l, item, price) = raise Fail "not yet implemented."
+
+	fun search(l, item) = raise Fail "not yet implemented."
+end;
+
 (* DATATYPE
 
 
@@ -12,8 +21,8 @@ with
 
 (* add (receipt, item)
 	TYPE: receipt * string -> receipt
-	PRE:
-	POST:
+	PRE: true
+	POST: a receipt with one more occurence of item.
 *)
 fun add (receipt, item) = raise Fail "not yet implemented."
 
@@ -24,9 +33,10 @@ fun add (receipt, item) = raise Fail "not yet implemented."
 *)
 
 (* sum (receipt, prices)
-	TYPE:
-	PRE:
-	POST:
+	TYPE: receipt * prices -> int
+	PRE: true
+	POST: The total price of the receipt in the smallest unit of the currency,
+	      e.g. cent or öre.
 *)
 fun sum (receipt, prices) = raise Fail "not yet implemented."
 
@@ -38,17 +48,20 @@ fun sum (receipt, prices) = raise Fail "not yet implemented."
 *)
 
 (* display (receipt, prices)
-	TYPE:
-	PRE:
-	POST:
+	TYPE: receipt * prices -> unit
+	PRE: true
+	POST: none
+	SIDE-EFFECT: prints the receipt to screen, using one entry for each item and
+	             also displays the total price of the receipt.
 *)
 fun display receipt = raise Fail "not yet implemented."
 
-(* requireID (exists beer)
-	TYPE:
-	PRE:
-	POST:
+(* requireID receipt
+	TYPE: receipt -> bool
+	PRE: true
+	POST: true if there is any item on the receipt that requires ID verification,
+	      such as beer or tabaco.
 *)
 fun requireID receipt = raise Fail "not yet implemented."
 
-end
+end;
