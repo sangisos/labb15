@@ -49,13 +49,21 @@ with
    PRE:  true
    POST: An empty receipt.
 *)
+fun new () = Void;
 
 (* add (receipt, item)
 	TYPE: receipt * string -> receipt
 	PRE: true
 	POST: a receipt with one more occurence of item.
 *)
-fun add (receipt, item) = raise Fail "not yet implemented."
+fun add (Void, item) = Receipt(item, 1, Void, Void)
+  | add (Receipt(name, count, l, r), item) =
+	if name = item then
+		Receipt(name, count+1, l, r)
+	else if name < item then
+		Receipt(name, count, add(l, item), r)
+	else
+		Receipt(name, count, l, add(r, item));
 
 (* del (receipt, item)
    TYPE: receipt * string -> receipt
