@@ -12,7 +12,7 @@ with
 		PRE:  true
 		POST: An empty price list.
 *)
-	val priceNew () = Prices([])
+	fun priceNew () = Prices([])
 
 	(* priceAdd l, item, price
 		TYPE: prices * string * int -> prices
