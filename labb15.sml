@@ -16,7 +16,7 @@ with
 		POST: add the price information of the product with the name item and the
 		      price price to l.
 	*)
-	fun priceAdd(l, item, price) = raise Fail "not yet implemented."
+	fun priceAdd(l, item, price) = (item,price)::l
 
 	(* priceSearch l, item
 		TYPE: prices * string -> int
