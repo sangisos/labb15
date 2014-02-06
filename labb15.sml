@@ -20,14 +20,16 @@ fun add (receipt, item) = raise Fail "not yet implemented."
 (* sum
 
 *)
+fun sum receipt = raise Fail "not yet implemented."
 
 (* addTax
 
 *)
 
-(* print
+(* display
 
 *)
+fun display receipt = raise Fail "not yet implemented."
 
 (* discount (search)
 
@@ -36,4 +38,6 @@ fun add (receipt, item) = raise Fail "not yet implemented."
 (* requireID (exists beer)
 
 *)
+fun requireID receipt = raise Fail "not yet implemented."
+
 end
