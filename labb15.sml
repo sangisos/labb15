@@ -2,7 +2,8 @@
 
 
 *)
-
+abstype receipt = Void | Receipt of string * int * int * receipt * receipt
+with
 (* new
 
 *)
@@ -34,3 +35,4 @@
 (* requireID (exists beer)
 
 *)
+end
