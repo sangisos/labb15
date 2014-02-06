@@ -7,8 +7,12 @@
 *)
 abstype prices = Prices of (string * int) list
 with
-	(* empty is an empty product price list *)
-	val empty = []
+	(* priceNew
+		TYPE: unit -> prices
+		PRE:  true
+		POST: An empty price list.
+*)
+	val priceNew () = Prices([])
 
 	(* priceAdd l, item, price
 		TYPE: prices * string * int -> prices
