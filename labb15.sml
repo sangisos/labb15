@@ -1,6 +1,15 @@
-(* DATATYPE
-
-
+(* abstype receipt
+   REPRESENTATION CONVETION: A binary search tree represented by
+      Receipt(itemName, itemAmount, L, R) where
+         itemName is the name of the specific item,
+         itemAmount is the total number of the specific item,
+         L is the left binary search tree receipt,
+         R is the right binary search tree receipt.
+   REPRESENTATION INVARIANT: for a binary search tree
+      with (itemName,itemAmount) in the root, left subtree L,
+      and right subtree R:
+      - every element of L has a itemName smaller
+      - every element of R has a itemName larger
 *)
 abstype receipt = Void | Receipt of string * int * receipt * receipt
 with
