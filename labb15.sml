@@ -15,7 +15,7 @@ with
 *)
 fun add (receipt, item) = raise Fail "not yet implemented."
 
-(* del receipt item
+(* del (receipt, item)
    TYPE: receipt * string -> receipt
    PRE:  true
    POST: returns reciept without one occurence of item.
@@ -26,18 +26,17 @@ fun add (receipt, item) = raise Fail "not yet implemented."
 *)
 fun sum receipt = raise Fail "not yet implemented."
 
-(* addTax
-
+(* addTax (takeAway, reciept)
+   TYPE: bool * receipt -> receipt
+   PRE:  true
+   POST: receipt with an item Tax added or updated, the amount depending on
+         the bool takeAway.
 *)
 
 (* display
 
 *)
 fun display receipt = raise Fail "not yet implemented."
-
-(* discount (search)
-
-*)
 
 (* requireID (exists beer)
 
