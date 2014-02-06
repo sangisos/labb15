@@ -11,6 +11,7 @@ with
 (* add (ev search)
 
 *)
+fun add (receipt, item) = raise Fail "not yet implemented."
 
 (* del (search)
 
