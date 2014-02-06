@@ -10,15 +10,15 @@ with
 	(* empty is an empty product price list *)
 	val empty = []
 
-	(* add l, item, price
+	(* priceAdd l, item, price
 		TYPE: prices * string * int -> prices
 		PRE: true
 		POST: add the price information of the product with the name item and the
 		      price price to l.
 	*)
-	fun add(l, item, price) = raise Fail "not yet implemented."
+	fun priceAdd(l, item, price) = raise Fail "not yet implemented."
 
-	(* search l, item
+	(* priceSearch l, item
 		TYPE: prices * string -> int
 		PRE: true
 		POST: add the price information of the product with the name item and the
@@ -26,7 +26,7 @@ with
 		SIDE-EFFECT: raises an exception if the product name item is not present
 		             in l.
 	*)
-	fun search(l, item) = raise Fail "not yet implemented."
+	fun priceSearch(l, item) = raise Fail "not yet implemented."
 end;
 
 (* abstype receipt
@@ -77,7 +77,9 @@ fun add (Void, item) = Receipt(item, 1, Void, Void)
 	POST: The total price of the receipt in the smallest unit of the currency,
 	      e.g. cent or öre.
 *)
-fun sum (receipt, prices) = raise Fail "not yet implemented."
+fun sum (Void, prices) = 0
+  | sum (Receipt(name, count, l, r), prices) =
+	count * priceSearch(prices, name) + sum(l, prices) + sum(r, prices);
 
 (* addTax (takeAway, reciept)
    TYPE: bool * receipt -> receipt
