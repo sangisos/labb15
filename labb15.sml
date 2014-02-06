@@ -133,9 +133,13 @@ fun sum (Void, prices) = 0
 *)
 fun display (Void, prices) = ()
   | display (Receipt(name, count, l, r), prices) =
-	(display(l, prices);
-	print(name^": "^Int.toString(count * priceSearch(prices, name))^"\n");
-	display(r, prices));
+	let
+		val price = priceSearch(prices, name)
+	in
+		(display(l, prices);
+		print(Int.toString(count)^" "^name^": "^Int.toString(count * price)^" a "^Int.toString(price)^"\n");
+		display(r, prices))
+	end;
 
 (* requireID (receipt, names)
 	TYPE: receipt * string list -> bool
